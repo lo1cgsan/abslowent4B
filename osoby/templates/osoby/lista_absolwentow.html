@@ -1,0 +1,17 @@
+{% extends 'szablon.html' %}
+
+{% block tresc %}
+    <div class="w-100 bg-primary rounded p-4">
+        <h2 class="section-heading mb-4">
+            Lista absolwentów
+        </h2>
+
+        <ul>
+        {% for a in absolwenci %}
+        <li class="mb-5">
+          {{ a }}, klasa {{ a.klasa.nazwa }} ({{ a.klasa.rok_matury }})
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
