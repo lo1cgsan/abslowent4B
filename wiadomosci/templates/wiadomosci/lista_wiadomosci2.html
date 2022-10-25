@@ -15,5 +15,10 @@
         </li>
         {% endfor %}
         </ul>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'wiadomosci:dodaj' %}" class="btn btn-secondary">Dodaj wiadomość</a>
+        {% endif %}
+
     </div>
 {% endblock %}
