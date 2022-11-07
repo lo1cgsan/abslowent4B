@@ -22,4 +22,4 @@ def dodaj_wiadomosc(request):
             return redirect(reverse('wiadomosci:lista'))
     else:
         form = WiadomoscForm()
-    return render(request, 'wiadomosci/dodaj_wiadomosc1.html', {'form': form})
+    return render(request, 'wiadomosci/dodaj_wiadomosc3.html', {'form': form})
