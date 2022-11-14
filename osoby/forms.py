@@ -1,6 +1,22 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from osoby.models import Klasa
+
+class UserEditForm(forms.ModelForm):
+    klasa = forms.ModelChoiceField(
+        queryset=Klasa.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control w-25'})
+    )
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+        widgets = {
+            'first_name': forms.TextInput(attrs={'required': 'required', 'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'required': 'required', 'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'required': 'required', 'class': 'form-control'}),
+        }
 
 class UserCreateForm(UserCreationForm):
 

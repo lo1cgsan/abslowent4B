@@ -1,0 +1,16 @@
+{% extends 'szablon.html' %}
+{% block tytul %}Absolwent – Profil{% endblock %}
+{% block h1 %}Absolwent – Profil{% endblock %}
+{% block tresc %}
+    <div class="w-100 bg-primary rounded p-4">
+        <h2 class="section-heading mb-4">
+            <span class="section-heading-upper">Twój profil</span>
+            <span class="section-heading-lower">Dane użytkownika</span>
+        </h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-secondary">Zapisz</button>
+        </form>
+    </div>
+{% endblock %}
