@@ -22,3 +22,14 @@ class Absolwent(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
+
+class Dokument(models.Model):
+    opis = models.CharField(max_length=255, unique=True)
+    plik = models.FileField(upload_to='dokumenty/')
+    data_d = models.DateTimeField("dodano", auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'dokumenty'
+
+    def __str__(self):
+        return self.opis

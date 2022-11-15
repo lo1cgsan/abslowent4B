@@ -3,4 +3,4 @@ from osoby import models
 
 admin.site.register(models.Klasa)
 admin.site.register(models.Absolwent)
-
+admin.site.register(models.Dokument)

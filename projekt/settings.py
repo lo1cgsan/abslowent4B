@@ -126,3 +126,5 @@ STATICFILES_DIRS = [BASE_DIR / 'templates',]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'osoby:loguj-osobe'
+MEDIA_URL = '/pliki/'
+MEDIA_ROOT = BASE_DIR / 'pliki'
