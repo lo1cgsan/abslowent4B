@@ -23,13 +23,25 @@ class Absolwent(models.Model):
     def __str__(self):
         return self.user.get_full_name()
 
+def rozmiar_pliku(value):
+    limit = 1024 * 1024
+    if value.size > limit:
+        raise ValidationError('Za duży plik. Maksymalny rozmiar to 1 MB.')
+
 class Dokument(models.Model):
     opis = models.CharField(max_length=255, unique=True)
-    plik = models.FileField(upload_to='dokumenty/')
+    plik = models.FileField(upload_to='dokumenty/', validators=[rozmiar_pliku])
     data_d = models.DateTimeField("dodano", auto_now_add=True)
+    TYPY = (('K', 'Lista klas'), ('U', 'Lista uczniów'))
+    typ = models.CharField(max_length=1, choices=TYPY, default='K')
 
     class Meta:
         verbose_name_plural = 'dokumenty'
+
+    def delete(self, *args, **kwargs):
+        storage, path = self.plik.storage, self.plik.path
+        super(Dokument, self).delete(*args, **kwargs)
+        storage.delete(path)
 
     def __str__(self):
         return self.opis

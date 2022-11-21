@@ -45,3 +45,7 @@ class UserLoginForm(forms.Form):
     haslo = forms.CharField(label="Hasło", required=True, widget=forms.TextInput(attrs={'type': 'password', 'class': 'form-control'}))
 
 
+class KlasaForm(forms.ModelForm):
+    class Meta:
+        model = Klasa
+        exclude = ('data_d',)
